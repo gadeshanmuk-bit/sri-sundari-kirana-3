@@ -117,6 +117,19 @@ export default function CheckoutPage() {
       setOrderPlaced(true)
       clearCart()
       toast.success('Order placed successfully!')
+      const whatsappMessage = `New Order - Sri Sundari Kirana
+
+Customer: ${formData.fullName}
+Phone: ${formData.phoneNumber}
+Address: ${formData.address}
+
+Items:
+${items.map(item => ${item.name} x ${item.quantity}).join('\n')}
+
+Total: ₹${totalAmount}
+
+Notes: ${formData.orderNotes || 'None'}`
+window.open(https://wa.me/918309606916?text=${encodeURIComponent(whatsappMessage)}, '_blank')
     } catch (error) {
       console.error('Order creation failed:', error)
       toast.error('Failed to place order. Please try calling us directly.')

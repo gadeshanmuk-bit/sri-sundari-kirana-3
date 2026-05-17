@@ -338,7 +338,23 @@ export default function AdminDashboard() {
                   </TableHeader>
                   <TableBody>
                     {filteredOrders.map((order) => (
-                      <TableRow key={order.id}>
+                     <TableRow
+  key={order.id}
+  className="cursor-pointer"
+  onClick={() =>
+    alert(
+      `Customer: ${order.customerName}
+Phone: ${order.phoneNumber}
+Address: ${order.address}
+
+Items:
+${order.items?.map((item) => ${item.name} x ${item.quantity}).join("\n")}
+
+Total: ₹${order.totalAmount}
+Notes: ${order.orderNotes || "No notes"}`
+    )
+  }
+>
                         <TableCell className="font-mono text-sm">
                           {order.id.slice(0, 8)}...
                         </TableCell>

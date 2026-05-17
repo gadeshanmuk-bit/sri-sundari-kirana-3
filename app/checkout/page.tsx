@@ -125,7 +125,6 @@ Address: ${formData.address}
 
 Items:
 ${items.map(item => ${item.name} x ${item.quantity}).join('\n')}
-
 Total: ₹${totalAmount}
 
 Notes: ${formData.orderNotes || 'None'}`

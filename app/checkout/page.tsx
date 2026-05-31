@@ -124,7 +124,7 @@ Phone: ${formData.phoneNumber}
 Address: ${formData.address}
 
 Items:
-${items.map(item => `${item.productName || item.name} x ${item.quantity}`).join('\n')}
+${items.map(item => `${item.product?.name || 'Unknown Item'} x ${item.quantity}`).join('\n')}
 Total: ₹${totalAmount}
 
 Notes: ${formData.orderNotes || 'None'}`

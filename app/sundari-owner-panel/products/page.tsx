@@ -201,7 +201,7 @@ export default function ProductsManagement() {
         category: productForm.category,
         basePrice: parseFloat(productForm.basePrice),
         unit: productForm.unit,
-        description: productForm.description.trim() || undefined,
+        description: productForm.description?.trim() || '',
         inStock: productForm.inStock,
         image: `/images/products/${productForm.name.toLowerCase().replace(/\s+/g, '-')}.jpg`,
       }

@@ -227,7 +227,7 @@ export default function ProductsManagement() {
 
   console.error('Product save error:', error)
   toast.error('Failed to save product')
-}
+
     } finally {
       setSaving(false)
     }

@@ -224,7 +224,7 @@ export default function ProductsManagement() {
       }
       setProductDialogOpen(false)
     } catch (error) {
-   catch (error) {
+
   console.error('Product save error:', error)
   toast.error('Failed to save product')
 }

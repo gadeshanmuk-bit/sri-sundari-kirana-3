@@ -106,7 +106,7 @@ export default function CheckoutPage() {
         customerName: formData.fullName.trim(),
         phoneNumber: formData.phoneNumber.trim(),
         address: formData.address.trim(),
-        orderNotes: formData.orderNotes.trim() || undefined,
+  orderNotes: formData.orderNotes?.trim() || '',
         items,
         totalAmount,
         status: 'pending',

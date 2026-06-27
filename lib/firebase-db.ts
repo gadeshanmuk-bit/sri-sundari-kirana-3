@@ -97,13 +97,20 @@ export async function addProduct(product: Omit<Product, 'id' | 'createdAt' | 'up
     return id
   }
   
+try {
   const productsRef = collection(db, 'products')
+
   const docRef = await addDoc(productsRef, {
     ...product,
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   })
+
+  console.log("✅ Product saved:", docRef.id)
   return docRef.id
+} catch (error) {
+  console.error("❌ addProduct failed:", error)
+  throw error
 }
 
 export async function updateProduct(id: string, data: Partial<Product>): Promise<void> {

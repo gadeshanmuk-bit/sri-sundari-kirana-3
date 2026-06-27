@@ -112,6 +112,7 @@ try {
   console.error("❌ addProduct failed:", error)
   throw error
 }
+}
 
 export async function updateProduct(id: string, data: Partial<Product>): Promise<void> {
   if (!isFirebaseConfigured || !db) {

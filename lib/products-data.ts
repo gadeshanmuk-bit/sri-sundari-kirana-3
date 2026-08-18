@@ -1,4 +1,4 @@
-import type { Product, Category } from './types'
+import type { Product, Category } from './types';
 
 export const categories: Category[] = [
   { id: 'rice-grains', name: 'Rice & Grains', nameTelugu: 'బియ్యం & ధాన్యాలు', icon: 'grain', order: 1 },

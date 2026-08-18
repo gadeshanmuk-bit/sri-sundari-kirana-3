@@ -1,25 +1,12 @@
-'use client'
-
-import { useState } from 'react'
-import Link from 'next/link'
-import { useCart } from '@/lib/cart-context'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { Badge } from '@/components/ui/badge'
-import {
-  Search,
-  ShoppingCart,
-  Menu,
-  Phone,
-  Clock,
-  MapPin,
-  Truck,
-  X,
-  Plus,
-  Minus,
-  Trash2,
-} from 'lucide-react'
+'use client';
+import { useState } from 'react';
+ import Link from'next/link';
+import { useCart } from '@/lib/cart-context';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Badge } from '@/components/ui/badge';
+import { Search, ShoppingCart, Menu, Phone, Clock, MapPin, Truck, Plus, Minus, Trash2,  } from 'lucide-react';
 
 interface HeaderProps {
   onSearch?: (query: string) => void

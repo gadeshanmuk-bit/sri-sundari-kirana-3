@@ -1,35 +1,21 @@
-'use client'
-
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useCart } from '@/lib/cart-context'
-import { createOrder } from '@/lib/firebase-db'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Badge } from '@/components/ui/badge'
-import {
-  ArrowLeft,
-  ShoppingCart,
-  Truck,
-  Phone,
-  MapPin,
-  CheckCircle,
-  Banknote,
-  Clock,
-  User,
-  FileText,
-  Home,
-  Loader2,
-} from 'lucide-react'
-import { toast } from 'sonner'
+'use client';
+import { useState } from 'react';
+ import Link from'next/link';
+import { useRouter } from 'next/navigation';
+import { useCart } from '@/lib/cart-context';
+import { createOrder } from '@/lib/firebase-db';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, ShoppingCart, Truck, Phone, CheckCircle, Banknote, Clock, User, FileText, Home, Loader2,  } from 'lucide-react';
+import { toast } from 'sonner';
 
 const categoryEmojis: Record<string, string> = {
   'rice-grains': '🌾',

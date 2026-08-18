@@ -1,7 +1,6 @@
-'use client'
-
-import React, { createContext, useContext, useReducer, useEffect, type ReactNode } from 'react'
-import type { CartItem, Product } from '@/lib/types'
+'use client';
+import React, { createContext, useContext, useReducer, useEffect, type ReactNode } from 'react';
+import type { CartItem, Product } from '@/lib/types';
 
 interface CartState {
   items: CartItem[]
@@ -67,7 +66,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     }
 
     case 'REMOVE_ITEM': {
-      const newItems = state.items.filter(
+      let newItems = state.items.filter(
         (item) => !(item.product.id === action.payload.productId && item.selectedWeight === action.payload.selectedWeight)
       )
       const totals = calculateTotals(newItems)
@@ -75,7 +74,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     }
 
     case 'UPDATE_QUANTITY': {
-      const newItems = state.items.map((item) =>
+      let newItems = state.items.map((item) =>
         item.product.id === action.payload.productId && item.selectedWeight === action.payload.selectedWeight
           ? { ...item, quantity: action.payload.quantity, totalPrice: action.payload.totalPrice }
           : item

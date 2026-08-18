@@ -1,16 +1,15 @@
-'use client'
-
-import { useState, useMemo, useEffect } from 'react'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
-import { ProductCard } from '@/components/product-card'
-import { CustomRequestDialog } from '@/components/custom-request-dialog'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Skeleton } from '@/components/ui/skeleton'
-import { initialProducts, categories } from '@/lib/products-data'
-import type { Product, Category } from '@/lib/types'
+'use client';
+import { useState, useMemo, useEffect } from 'react';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { ProductCard } from '@/components/product-card';
+import { CustomRequestDialog } from '@/components/custom-request-dialog';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
+import { initialProducts, categories } from '@/lib/products-data';
+import type { Product, Category } from '@/lib/types';
 import {
   Truck,
   Phone,
@@ -20,7 +19,7 @@ import {
   Sparkles,
   ChevronRight,
   Star,
-} from 'lucide-react'
+} from 'lucide-react';
 
 const categoryIcons: Record<string, string> = {
   'rice-grains': '🌾',
@@ -243,8 +242,7 @@ export default function HomePage() {
                   {selectedCategory
                     ? categories.find((c) => c.id === selectedCategory)?.name || 'Products'
                     : searchQuery
-                    ? 'Search Results'
-                    : 'All Products'}
+                    ? 'Search Results' :'All Products'}
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
                   {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}{' '}

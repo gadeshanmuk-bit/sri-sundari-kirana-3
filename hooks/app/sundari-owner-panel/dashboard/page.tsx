@@ -1,22 +1,21 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { useAuth } from '@/lib/auth-context'
-import { getOrders, getProducts, getCustomRequests, updateOrderStatus } from '@/lib/firebase-db'
-import type { Order, Product, CustomRequest } from '@/lib/types'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Skeleton } from '@/components/ui/skeleton'
+'use client';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+ import Link from'next/link';
+import { useAuth } from '@/lib/auth-context';
+import { getOrders, getProducts, getCustomRequests, updateOrderStatus } from '@/lib/firebase-db';
+import type { Order, Product, CustomRequest } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@/components/ui/select';
 import {
   Table,
   TableBody,
@@ -24,34 +23,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@/components/ui/table';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import {
-  Store,
-  Package,
-  ShoppingCart,
-  Clock,
-  CheckCircle,
-  Truck,
-  LogOut,
-  Loader2,
-  MoreHorizontal,
-  Phone,
-  MapPin,
-  Eye,
-  RefreshCw,
-  MessageSquare,
-  IndianRupee,
-  Box,
-  Users,
-} from 'lucide-react'
-import { toast } from 'sonner'
-import { format } from 'date-fns'
+} from '@/components/ui/dropdown-menu';
+import { Store, Package, ShoppingCart, Clock, CheckCircle, Truck, LogOut, Loader2, MoreHorizontal, Phone, RefreshCw, MessageSquare, IndianRupee, Box,  } from 'lucide-react';
+import { toast } from 'sonner';
+import { format } from 'date-fns';
 
 export default function AdminDashboard() {
   const router = useRouter()

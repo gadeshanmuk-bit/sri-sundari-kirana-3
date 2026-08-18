@@ -10,10 +10,10 @@ import {
   where,
   orderBy,
   serverTimestamp,
-} from 'firebase/firestore'
-import { db, isFirebaseConfigured } from './firebase'
-import type { Product, Order, Category, CustomRequest } from './types'
-import { initialProducts, categories as defaultCategories } from './products-data'
+} from 'firebase/firestore';
+import { db, isFirebaseConfigured } from './firebase';
+import type { Product, Order, Category, CustomRequest } from './types';
+import { initialProducts, categories as defaultCategories } from './products-data';
 
 // In-memory storage for demo mode
 let demoProducts: Product[] = initialProducts.map((p, i) => ({

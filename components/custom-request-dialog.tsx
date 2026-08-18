@@ -1,10 +1,9 @@
-'use client'
-
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
+'use client';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Dialog,
   DialogContent,
@@ -12,10 +11,10 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { HelpCircle, Send, CheckCircle } from 'lucide-react'
-import { createCustomRequest } from '@/lib/firebase-db'
-import { toast } from 'sonner'
+} from '@/components/ui/dialog';
+import { HelpCircle, Send, CheckCircle } from 'lucide-react';
+import { createCustomRequest } from '@/lib/firebase-db';
+import { toast } from 'sonner';
 
 export function CustomRequestDialog() {
   const [open, setOpen] = useState(false)

@@ -1,24 +1,23 @@
-'use client'
-
-import { useState } from 'react'
-import Image from 'next/image'
-import { useCart } from '@/lib/cart-context'
-import type { Product } from '@/lib/types'
-import { WEIGHT_OPTIONS, QUANTITY_OPTIONS } from '@/lib/types'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+'use client';
+import { useState } from 'react';
+ 
+import { useCart } from '@/lib/cart-context';
+import type { Product } from '@/lib/types';
+import { WEIGHT_OPTIONS, QUANTITY_OPTIONS } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from '@/components/ui/dialog'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Plus, ShoppingCart, Check } from 'lucide-react'
-import { toast } from 'sonner'
+} from '@/components/ui/dialog';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Plus, ShoppingCart } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface ProductCardProps {
   product: Product

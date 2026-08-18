@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { Phone, Clock, MapPin, Mail, Truck } from 'lucide-react'
+import Link from 'next/link';
+import { Phone, Clock, MapPin, Truck } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -103,7 +103,7 @@ export function Footer() {
 
         <div className="border-t border-muted/20 mt-8 pt-8 text-center">
           <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} Sri Sundari Kirana & General Stores. All rights reserved.
+            &copy; {new Date()?.getFullYear()} Sri Sundari Kirana & General Stores. All rights reserved.
           </p>
           <p className="text-xs text-muted/60 mt-2">
             Serving Rajamahendravaram with quality groceries
@@ -111,5 +111,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

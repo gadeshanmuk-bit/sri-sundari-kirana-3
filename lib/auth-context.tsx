@@ -1,13 +1,12 @@
-'use client'
-
-import React, { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+'use client';
+import React, { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import {
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged,
   type User,
-} from 'firebase/auth'
-import { auth, isFirebaseConfigured } from './firebase'
+} from 'firebase/auth';
+import { auth, isFirebaseConfigured } from './firebase';
 
 interface AuthContextType {
   user: User | null

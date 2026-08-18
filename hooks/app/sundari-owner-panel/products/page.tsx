@@ -1,30 +1,20 @@
-'use client'
-
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { useAuth } from '@/lib/auth-context'
-import {
-  getProducts,
-  getCategories,
-  addProduct,
-  updateProduct,
-  deleteProduct,
-  addCategory,
-  updateCategory,
-  deleteCategory,
-} from '@/lib/firebase-db'
-import { categories as defaultCategories } from '@/lib/products-data'
-import type { Product, Category } from '@/lib/types'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Switch } from '@/components/ui/switch'
-import { Skeleton } from '@/components/ui/skeleton'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+'use client';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+ import Link from'next/link';
+import { useAuth } from '@/lib/auth-context';
+import { getProducts, getCategories, addProduct, updateProduct, deleteProduct, addCategory, updateCategory,  } from '@/lib/firebase-db';
+import { categories as defaultCategories } from '@/lib/products-data';
+import type { Product, Category } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Switch } from '@/components/ui/switch';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Dialog,
   DialogContent,
@@ -32,14 +22,14 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from '@/components/ui/dialog'
+} from '@/components/ui/dialog';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@/components/ui/select';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -50,7 +40,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+} from '@/components/ui/alert-dialog';
 import {
   Table,
   TableBody,
@@ -58,21 +48,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import {
-  Store,
-  Package,
-  ArrowLeft,
-  Plus,
-  Edit,
-  Trash2,
-  Loader2,
-  Search,
-  LogOut,
-  Tags,
-  RefreshCw,
-} from 'lucide-react'
-import { toast } from 'sonner'
+} from '@/components/ui/table';
+import { Package, ArrowLeft, Plus, Edit, Trash2, Loader2, Search, LogOut, Tags, RefreshCw,  } from 'lucide-react';
+import { toast } from 'sonner';
 
 const categoryEmojis: Record<string, string> = {
   'rice-grains': '🌾',

@@ -78,10 +78,7 @@ export default function CheckoutPage() {
 
     if (!formData.address.trim()) {
       newErrors.address = 'Delivery address is required'
-    if (!formData.address.trim()) {
-  newErrors.address = 'Delivery address is required'
 }
-
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }

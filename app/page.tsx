@@ -10,7 +10,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Skeleton } from '@/components/ui/skeleton'
 import { initialProducts, categories } from '@/lib/products-data'
-import type { Product, Category } from '@/lib/types'
+import { getProducts } from '@/lib/firebase-db'
+import type { Product } from '@/lib/types'
 import {
   Truck,
   Phone,
@@ -44,15 +45,38 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Transform initial products with IDs
-    const productsWithIds = initialProducts.map((product, index) => ({
+    let cancelled = false
+
+    const fallbackProducts: Product[] = initialProducts.map((product, index) => ({
       ...product,
       id: `product-${index}`,
       createdAt: new Date(),
       updatedAt: new Date(),
     }))
-    setProducts(productsWithIds)
-    setLoading(false)
+
+    const loadProducts = async () => {
+      try {
+        const firestoreProducts = await getProducts()
+        if (!cancelled) {
+          setProducts(firestoreProducts)
+        }
+      } catch (error) {
+        console.error('Failed to load products from Firestore:', error)
+        if (!cancelled) {
+          setProducts(fallbackProducts)
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false)
+        }
+      }
+    }
+
+    void loadProducts()
+
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   const filteredProducts = useMemo(() => {

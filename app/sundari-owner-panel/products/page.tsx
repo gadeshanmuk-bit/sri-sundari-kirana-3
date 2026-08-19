@@ -205,7 +205,7 @@ try {
     if (productImage && storage) {
         const imageRef = ref(
             storage,
-            products/${Date.now()}-${productImage.name}
+            `products/${Date.now()}-${productImage.name}`
         )
 
         await uploadBytes(imageRef, productImage)

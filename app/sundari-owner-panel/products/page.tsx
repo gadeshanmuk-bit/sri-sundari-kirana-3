@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { storage } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/lib/auth-context'
@@ -112,6 +114,9 @@ export default function ProductsManagement() {
     inStock: true,
   })
 
+  const [productImage, setProductImage] = useState<File | null>(null)
+const [imagePreview, setImagePreview] = useState('')
+
   // Category Dialog
   const [categoryDialogOpen, setCategoryDialogOpen] = useState(false)
   const [editingCategory, setEditingCategory] = useState<Category | null>(null)
@@ -194,8 +199,20 @@ export default function ProductsManagement() {
     }
 
     setSaving(true)
-    try {
-      const productData = {
+try {
+    let imageUrl = editingProduct?.image || ''
+
+    if (productImage && storage) {
+        const imageRef = ref(
+            storage,
+            products/${Date.now()}-${productImage.name}
+        )
+
+        await uploadBytes(imageRef, productImage)
+        imageUrl = await getDownloadURL(imageRef)
+    }
+
+    const productData = {
         name: productForm.name.trim(),
         nameTelugu: productForm.nameTelugu.trim(),
         category: productForm.category,
@@ -203,7 +220,7 @@ export default function ProductsManagement() {
         unit: productForm.unit,
         description: productForm.description?.trim() || '',
         inStock: productForm.inStock,
-        image: `/images/products/${productForm.name.toLowerCase().replace(/\s+/g, '-')}.jpg`,
+        image: imageUrl,
       }
 
       if (editingProduct) {
@@ -595,7 +612,33 @@ export default function ProductsManagement() {
                 />
               </div>
             </div>
-            <div className="space-y-2">
+           <div className="space-y-2">
+  <Label htmlFor="productImage">Product Photo</Label>
+
+  <Input
+    id="productImage"
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files?.[0] || null
+      setProductImage(file)
+
+      if (file) {
+        setImagePreview(URL.createObjectURL(file))
+      } else {
+        setImagePreview('')
+      }
+    }}
+  />
+
+  {imagePreview && (
+    <img
+      src={imagePreview}
+      alt="Product preview"
+      className="h-24 w-24 rounded-md object-cover"
+    />
+  )}
+</div> <div className="space-y-2">
               <Label htmlFor="category">Category *</Label>
               <Select
                 value={productForm.category}

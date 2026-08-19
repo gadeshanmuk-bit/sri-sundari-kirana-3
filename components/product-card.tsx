@@ -107,9 +107,17 @@ export function ProductCard({ product }: ProductCardProps) {
           className="relative aspect-square bg-secondary/30 flex items-center justify-center cursor-pointer"
           onClick={() => setDialogOpen(true)}
         >
-          <span className="text-6xl group-hover:scale-110 transition-transform duration-300">
-            {categoryEmojis[product.category] || '📦'}
-          </span>
+          {product.image ? (
+  <img
+    src={product.image}
+    alt={product.name}
+    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+  />
+) : (
+  <span className="text-6xl group-hover:scale-110 transition-transform duration-300">
+    {categoryEmojis[product.category] || '📦'}
+  </span>
+)}
           {!product.inStock && (
             <div className="absolute inset-0 bg-background/80 flex items-center justify-center">
               <span className="text-sm font-medium text-destructive">Out of Stock</span>

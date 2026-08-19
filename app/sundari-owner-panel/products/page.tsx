@@ -198,8 +198,31 @@ const [imagePreview, setImagePreview] = useState('')
 
     setSaving(true)
 try {
-    let imageUrl = editingProduct?.image || ''
-    const productData = {
+   let imageUrl = editingProduct?.image || ''
+
+if (productImage) {
+  const formData = new FormData()
+  formData.append('file', productImage)
+  formData.append('upload_preset', 'sri_sundari_products')
+  formData.append('folder', 'sri-sundari-products')
+
+  const response = await fetch(
+    'https://api.cloudinary.com/v1_1/mnbwm7so/image/upload',
+    {
+      method: 'POST',
+      body: formData,
+    }
+  )
+
+  if (!response.ok) {
+    throw new Error('Image upload failed')
+  }
+
+  const data = await response.json()
+  imageUrl = data.secure_url
+}
+
+const productData = {
         name: productForm.name.trim(),
         nameTelugu: productForm.nameTelugu.trim(),
         category: productForm.category,

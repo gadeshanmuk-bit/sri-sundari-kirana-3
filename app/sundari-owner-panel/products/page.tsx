@@ -1,8 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { storage } from '@/lib/firebase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useAuth } from '@/lib/auth-context'
@@ -201,17 +199,6 @@ const [imagePreview, setImagePreview] = useState('')
     setSaving(true)
 try {
     let imageUrl = editingProduct?.image || ''
-
-    if (productImage && storage) {
-        const imageRef = ref(
-            storage,
-            `products/${Date.now()}-${productImage.name}`
-        )
-
-        await uploadBytes(imageRef, productImage)
-        imageUrl = await getDownloadURL(imageRef)
-    }
-
     const productData = {
         name: productForm.name.trim(),
         nameTelugu: productForm.nameTelugu.trim(),
